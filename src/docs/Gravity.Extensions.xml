@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gravity.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:Gravity.Extensions.more.Class2">
+            <summary>
+            This is a class
+            </summary>
+        </member>
+        <member name="P:Gravity.Extensions.more.Class2.Prop">
+            <summary>
+            This is property
+            </summary>
+        </member>
+        <member name="M:Gravity.Extensions.more.Class2.B(System.String)">
+            <summary>
+            This is a method
+            </summary>
+            <param name="a">This is param</param>
+        </member>
+        <member name="T:Gravity.Extensions.Class3">
+            <summary>
+            This is a class
+            </summary>
+        </member>
+        <member name="P:Gravity.Extensions.Class3.Prop">
+            <summary>
+            This is property
+            </summary>
+        </member>
+        <member name="M:Gravity.Extensions.Class3.C(System.String)">
+            <summary>
+            This is a method
+            </summary>
+            <param name="a">This is param</param>
+        </member>
+        <member name="T:Gravity.Extensions.Class1">
+            <summary>
+            This is a class
+            </summary>
+        </member>
+        <member name="P:Gravity.Extensions.Class1.Prop">
+            <summary>
+            This is property
+            </summary>
+        </member>
+        <member name="M:Gravity.Extensions.Class1.A(System.String)">
+            <summary>
+            This is a method
+            </summary>
+            <param name="a">This is param</param>
+        </member>
+    </members>
+</doc>
