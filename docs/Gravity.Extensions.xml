@@ -4,53 +4,459 @@
         <name>Gravity.Extensions</name>
     </assembly>
     <members>
-        <member name="T:Gravity.Extensions.more.Class2">
+        <member name="T:Gravity.Extensions.AssemblyExtensions">
             <summary>
-            This is a class
+            Extensions for <see cref="T:System.Reflection.Assembly"/> and <see cref="N:System.Reflection"/> objects.
             </summary>
         </member>
-        <member name="P:Gravity.Extensions.more.Class2.Prop">
+        <member name="M:Gravity.Extensions.AssemblyExtensions.WriteEmbeddedResource(System.Reflection.Assembly,System.String)">
             <summary>
-            This is property
+            Writes an embedded resource to a file.
+            </summary>
+            <param name="assembly"><see cref="T:System.Reflection.Assembly"/> from which to read the resource.</param>
+            <param name="path">Path on which to write the file. The file name must match the resource file name.</param>
+        </member>
+        <member name="M:Gravity.Extensions.AssemblyExtensions.ReadEmbeddedResource(System.Reflection.Assembly,System.String)">
+            <summary>
+            Reads an embedded resource.
+            </summary>
+            <param name="assembly"><see cref="T:System.Reflection.Assembly"/> from which to read the resource.</param>
+            <param name="name">Resource name. Name must match the resource file name.</param>
+        </member>
+        <member name="T:Gravity.Extensions.CollectionExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Collections.Generic.IEnumerable`1"/> and <see cref="N:System.Collections"/> objects.
             </summary>
         </member>
-        <member name="M:Gravity.Extensions.more.Class2.B(System.String)">
+        <member name="M:Gravity.Extensions.CollectionExtensions.TryAddRange``1(System.Collections.Generic.List{``0},System.Collections.Generic.IEnumerable{``0})">
             <summary>
-            This is a method
+            Tries to add a range of items to a <see cref="T:System.Collections.Generic.List`1"/> list object.
             </summary>
-            <param name="a">This is param</param>
+            <typeparam name="T">The type of the list objects.</typeparam>
+            <param name="list">The <see cref="T:System.Collections.Generic.List`1"/> to add items to.</param>
+            <param name="range">A collection of items to add.</param>
+            <returns><see cref="F:System.Boolean.TrueString"/> if successful <see cref="F:System.Boolean.FalseString"/> if not.</returns>
         </member>
-        <member name="T:Gravity.Extensions.Class3">
+        <member name="M:Gravity.Extensions.CollectionExtensions.Split``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
             <summary>
-            This is a class
+            Splits <see cref="T:System.Collections.Generic.IEnumerable`1"/> into smaller collections of <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <typeparam name="T">The type of objects to enumerate.</typeparam>
+            <param name="source">Source <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</param>
+            <param name="itemsPerSet">Number of items per set.</param>
+            <returns>A collection of smaller <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.CollectionExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+             <summary>
+             Returns all distinct elements of the given source, where "distinctness"
+             is determined via a projection and the default equality comparer for the projected type
+             </summary>
+            
+             <typeparam name="TSource">Type of the source sequence.</typeparam>
+             <typeparam name="TKey">Type of the projected element.</typeparam>
+             <param name="source">Source sequence.</param>
+             <param name="keySelector">Projection for determining "distinctness".</param>
+             <returns>A sequence consisting of distinct elements from the source sequence, comparing them by the specified key projection.</returns>
+            
+             <remarks>
+             This operator uses deferred execution and streams the results, although
+             a set of already-seen keys is retained. If a key is seen multiple times,
+             only the first element with that key is returned.
+             </remarks>
+        </member>
+        <member name="M:Gravity.Extensions.CollectionExtensions.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+             <summary>
+             Returns all distinct elements of the given source, where "distinctness"
+             is determined via a projection and the default equality comparer for the projected type
+             </summary>
+            
+             <typeparam name="TSource">Type of the source sequence.</typeparam>
+             <typeparam name="TKey">Type of the projected element.</typeparam>
+             <param name="source">Source sequence.</param>
+             <param name="keySelector">Projection for determining "distinctness".</param>
+             <param name="comparer">The equality comparer to use to determine whether or not keys are equal. If null, the default equality comparer for <c>TSource</c> is used.</param>
+             <returns>A sequence consisting of distinct elements from the source sequence, comparing them by the specified key projection.</returns>
+            
+             <remarks>
+             This operator uses deferred execution and streams the results, although
+             a set of already-seen keys is retained. If a key is seen multiple times,
+             only the first element with that key is returned.
+             </remarks>
+        </member>
+        <member name="M:Gravity.Extensions.CollectionExtensions.AsNumbers(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Parse a collection strings into a collection of integers.
+            </summary>
+            <param name="collection">A collection of strings to parse.</param>
+            <returns>A collection of integers</returns>
+            <remarks>If the string object cannot be parsed it will be ignored and will not be returned.</remarks>
+        </member>
+        <member name="T:Gravity.Extensions.DataTableExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Data.DataTable"/> and <see cref="N:System.Data"/> objects.
             </summary>
         </member>
-        <member name="P:Gravity.Extensions.Class3.Prop">
+        <member name="M:Gravity.Extensions.DataTableExtensions.Filter(System.Data.DataTable,System.String)">
             <summary>
-            This is property
+            Gets a new <see cref="T:System.Data.DataTable"/> object that match the filter criteria.
+            </summary>
+            <param name="dataTable"><see cref="T:System.Data.DataTable"/> to filter.</param>
+            <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
+            <returns><see cref="T:System.Data.DataTable"/> object that match the filter criteria.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.ToDictionary(System.Data.DataTable)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.IDictionary`2"/> representation of <see cref="T:System.Data.DataTable"/> object.
+            </summary>
+            <param name="dataTable"><see cref="T:System.Data.DataTable"/> to populate from.</param>
+            <returns>A <see cref="T:System.Collections.Generic.IDictionary`2"/> representation of <see cref="T:System.Data.DataTable"/> object.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.ToDictionary(System.Data.DataRow)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.IDictionary`2"/> representation of <see cref="T:System.Data.DataRow"/> object.
+            </summary>
+            <param name="dataRow"><see cref="T:System.Data.DataTable"/> to populate from.</param>
+            <returns>A <see cref="T:System.Collections.Generic.IDictionary`2"/> representation of <see cref="T:System.Data.DataRow"/> object.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.GetValue(System.Data.DataRow,System.String)">
+            <summary>
+            Get a value for a row by column name. If column does not exists, return null;
+            </summary>
+            <param name="row"><see cref="T:System.Data.DataRow"/> to get from.</param>
+            <param name="column"><see cref="P:System.Data.DataColumn.ColumnName"/> to get from.</param>
+            <returns>Data value or null if not found.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.GetValue``1(System.Data.DataRow,System.String)">
+            <summary>
+            Get a value for a row by column name. If column does not exists, return null;
+            </summary>
+            <typeparam name="T">The type of the request value.</typeparam>
+            <param name="row"><see cref="T:System.Data.DataRow"/> to get from.</param>
+            <param name="column"><see cref="P:System.Data.DataColumn.ColumnName"/> to get from.</param>
+            <returns>Data value or null if not found.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.Merge(System.Collections.Generic.IEnumerable{System.Data.DataTable})">
+            <summary>
+            Merge a collection of <see cref="T:System.Data.DataTable"/> into a single <see cref="T:System.Data.DataTable"/> object.
+            </summary>
+            <param name="tables">A collection of <see cref="T:System.Data.DataTable"/> to merge from</param>
+            <returns>A single, merged <see cref="T:System.Data.DataTable"/> object.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.FromJson(System.Data.DataTable,System.String,System.String)">
+            <summary>
+            Populates a <see cref="T:System.Data.DataTable"/> from a given JSON (file or string).
+            </summary>
+            <param name="dataTable"><see cref="T:System.Data.DataTable"/> to populate to.</param>
+            <param name="source">JSON file or string to populate from.</param>
+            <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
+            <returns><see cref="T:System.Data.DataTable"/> object that match the filter criteria.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.FromCsv(System.Data.DataTable,System.String,System.String)">
+            <summary>
+            Populates a <see cref="T:System.Data.DataTable"/> from a given CSV (file or string).
+            </summary>
+            <param name="dataTable"><see cref="T:System.Data.DataTable"/> to populate to.</param>
+            <param name="source">CSV file or string to populate from.</param>
+            <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
+            <returns><see cref="T:System.Data.DataTable"/> object that match the filter criteria.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.FromSqlDatabase(System.Data.DataTable,System.String,System.String,System.String)">
+            <summary>
+            Populates a <see cref="T:System.Data.DataTable"/> from a given SQL Database.
+            </summary>
+            <param name="dataTable"><see cref="T:System.Data.DataTable"/> to populate to.</param>
+            <param name="connectionString">The connection used to open the SQL Server database.</param>
+            <param name="tableName">The name of the <see cref="T:System.Data.DataTable"/> to use for table mapping.</param>
+            <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
+            <returns><see cref="T:System.Data.DataTable"/> object that match the filter criteria.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.MarkDownToDataTable(System.Data.DataTable,System.String,System.String)">
+            <summary>
+            Populates a <see cref="T:System.Data.DataTable"/> from a given .MD (file or string).
+            </summary>
+            <param name="dataTable"><see cref="T:System.Data.DataTable"/> to populate to.</param>
+            <param name="source">.MD file or string to populate from.</param>
+            <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
+            <returns><see cref="T:System.Data.DataTable"/> object that match the filter criteria.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.DataTableExtensions.FromXml(System.Data.DataTable,System.String,System.String,System.String)">
+            <summary>
+            Populates a <see cref="T:System.Data.DataTable"/> from a given XML (file or string).
+            </summary>
+            <param name="dataTable"><see cref="T:System.Data.DataTable"/> to populate to.</param>
+            <param name="source">XML file or string to populate from.</param>
+            <param name="tableName">The name of the XML table to use for table mapping.</param>
+            <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
+            <returns><see cref="T:System.Data.DataTable"/> object that match the filter criteria.</returns>
+        </member>
+        <member name="T:Gravity.Extensions.DictionaryExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Collections.Generic.IDictionary`2"/> object.
             </summary>
         </member>
-        <member name="M:Gravity.Extensions.Class3.C(System.String)">
+        <member name="M:Gravity.Extensions.DictionaryExtensions.AddOrReplace``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})">
             <summary>
-            This is a method
+            Add or replace keys/values on source <see cref="T:System.Collections.Generic.IDictionary`2"/> from a target <see cref="T:System.Collections.Generic.IDictionary`2"/>.
             </summary>
-            <param name="a">This is param</param>
+            <typeparam name="TKey">The type of keys in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.</typeparam>
+            <typeparam name="TValue">The type of values in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.</typeparam>
+            <param name="to">Target <see cref="T:System.Collections.Generic.IDictionary`2"/>.</param>
+            <param name="from">Source <see cref="T:System.Collections.Generic.IDictionary`2"/>.</param>
+            <returns>Updated <see cref="T:System.Collections.Generic.IDictionary`2"/>.</returns>
+            <remarks>Can be used for merging dictionaries.</remarks>
         </member>
-        <member name="T:Gravity.Extensions.Class1">
+        <member name="M:Gravity.Extensions.DictionaryExtensions.GetIfExists``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
             <summary>
-            This is a class
+            Gets a value from a <see cref="T:System.Collections.Generic.IDictionary`2"/> if exists or default value if not.
+            </summary>
+            <typeparam name="TKey">The type of keys in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.</typeparam>
+            <typeparam name="TValue">The type of values in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.</typeparam>
+            <param name="dictionary">The <see cref="T:System.Collections.Generic.IDictionary`2"/> to get value from.</param>
+            <param name="key">Key by which to get value.</param>
+            <param name="altValue">Value to return if not found</param>
+            <returns>A value of the request type, or default value if not found.</returns>
+        </member>
+        <member name="T:Gravity.Extensions.HttpExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Net.Http.HttpResponseMessage"/> and <see cref="N:System.Net"/> objects.
             </summary>
         </member>
-        <member name="P:Gravity.Extensions.Class1.Prop">
+        <member name="M:Gravity.Extensions.HttpExtensions.ReadBody(System.Net.WebResponse)">
             <summary>
-            This is property
+            Reads the body from <see cref="T:System.Net.WebResponse"/> object.
+            </summary>
+            <param name="response"><see cref="T:System.Net.WebResponse"/> object to read from.</param>
+            <returns><see cref="T:System.Net.WebResponse"/> content as string.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.HttpExtensions.ToObject``1(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Deserialize <see cref="P:System.Net.Http.HttpResponseMessage.Content"/> into a given object type.
+            </summary>
+            <typeparam name="T">Expected object type</typeparam>
+            <param name="message"><see cref="T:System.Net.Http.HttpResponseMessage"/> to deserialize body from.</param>
+            <returns>Data Transfer Object of the provided type.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.HttpExtensions.ToObject(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Deserialize <see cref="P:System.Net.Http.HttpResponseMessage.Content"/> into a <see cref="T:Newtonsoft.Json.Linq.JObject"/>.
+            </summary>
+            <param name="message"><see cref="T:System.Net.Http.HttpResponseMessage"/> to deserialize body from.</param>
+            <returns><see cref="T:Newtonsoft.Json.Linq.JObject"/> instance.</returns>
+        </member>
+        <member name="T:Gravity.Extensions.ObjectExtensions">
+            <summary>
+            Extensions for <see cref="T:System.Object"/>.
             </summary>
         </member>
-        <member name="M:Gravity.Extensions.Class1.A(System.String)">
+        <member name="M:Gravity.Extensions.ObjectExtensions.ToJson(System.Object)">
             <summary>
-            This is a method
+            Serializes the specified <see cref="T:System.Object"/> into a JSON string.
             </summary>
-            <param name="a">This is param</param>
+            <param name="obj">The <see cref="T:System.Object"/> to serialize.</param>
+            <returns>A JSON string representation of the object.</returns>
+            <remarks>This method use <see cref="T:Newtonsoft.Json.Serialization.CamelCaseNamingStrategy"/>.</remarks>
+        </member>
+        <member name="M:Gravity.Extensions.ObjectExtensions.ToJson(System.Object,Newtonsoft.Json.Serialization.NamingStrategy)">
+            <summary>
+            Serializes the specified <see cref="T:System.Object"/> into a JSON string.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to serialize.</param>
+            <param name="namingStrategy">Resolving how property names and dictionary keys are serialized.</param>
+            <returns>A JSON string representation of the object.</returns>
+            <remarks>This method use <see cref="T:Newtonsoft.Json.Serialization.CamelCaseNamingStrategy"/>.</remarks>
+        </member>
+        <member name="M:Gravity.Extensions.ObjectExtensions.ToJson(System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Serializes the specified <see cref="T:System.Object"/> into a JSON string.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to serialize.</param>
+            <param name="settings">Specifies the settings on a <see cref="T:Newtonsoft.Json.JsonSerializer"/> object.</param>
+            <returns>A JSON string representation of the object.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.ObjectExtensions.Clone``1(``0)">
+            <summary>
+            Creates a new copy of this <see cref="T:System.Object"/>.
+            </summary>
+            <typeparam name="T"><see cref="T:System.Object"/> type to clone.</typeparam>
+            <param name="obj"><see cref="T:System.Object"/> to clone.</param>
+            <returns>A new <see cref="T:System.Object"/> copy (with a different memory address).</returns>
+        </member>
+        <member name="T:Gravity.Extensions.StringExtensions">
+            <summary>
+            Extensions for <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.Encrypt(System.String,System.String)">
+            <summary>
+            Encrypts a <see cref="T:System.String"/> using the provided encryption key.
+            </summary>
+            <param name="clearText"><see cref="T:System.String"/> to encrypt.</param>
+            <param name="key">Encryption key to use for encryption.</param>
+            <returns>Encrypted <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.Decrypt(System.String,System.String)">
+            <summary>
+            Decrypts a <see cref="T:System.String"/> using the provided encryption key.
+            </summary>
+            <param name="cipherText">Encrypted <see cref="T:System.String"/>.</param>
+            <param name="key">Encryption key to use for decryption.</param>
+            <returns>Decrypted <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.IsJson(System.String)">
+            <summary>
+            Return a value indicates if this <see cref="T:System.String"/> is a valid, able to compile JSON.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> on which to perform validation.</param>
+            <returns>True if this string is a valid JSON, False if not.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.IsXml(System.String)">
+            <summary>
+            Return a value indicates if this <see cref="T:System.String"/> is a valid, able to compile XML.
+            </summary>
+            <param name="xml"><see cref="T:System.String"/> on which to perform validation.</param>
+            <returns>True if this string is a valid XML, False if not.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.Evaluate(System.String,System.String,System.String)">
+            <summary>
+            Evaluates if source <see cref="T:System.String"/> meets a logical condition against a target <see cref="T:System.String"/>.
+            </summary>
+            <param name="source">Source <see cref="T:System.String"/>.</param>
+            <param name="operation">Operation to execute. Check 'About Comparison Operators Powershell' for more information.</param>
+            <param name="target">Target <see cref="T:System.String"/>.</param>
+            <returns>True if condition met. False if not.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.PascalToKebabCase(System.String)">
+            <summary>
+            Converts a PascalCase <see cref="T:System.String"/> to kebab-case <see cref="T:System.String"/>.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to convert.</param>
+            <returns>kebab-case representation of the <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.PascalToSpaceCase(System.String)">
+            <summary>
+            Converts a PascalCase <see cref="T:System.String"/> to Space Case <see cref="T:System.String"/>.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to convert.</param>
+            <returns>Space Case representation of the <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.PascalToCamelCase(System.String)">
+            <summary>
+            Converts a PascalCase <see cref="T:System.String"/> to camelCase <see cref="T:System.String"/>.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to convert.</param>
+            <returns>camelCase representation of the <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.ToInt(System.String)">
+            <summary>
+            Converts a string to <see cref="T:System.Int32"/>, or return 0 if not possible.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to convert.</param>
+            <returns><see cref="T:System.Int32"/> representation of the <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.ToBase64(System.String,System.Boolean)">
+            <summary>
+            Converts a <see cref="T:System.String"/> to Base64.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to convert.</param>
+            <param name="omitPaddaing">Replace all '=' chars in the string (defaults to true).</param>
+            <returns>Base64 representation of the <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.FromBase64(System.String)">
+            <summary>
+            Converts a <see cref="T:System.String"/> from Base64.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to convert.</param>
+            <returns><see cref="T:System.String"/> instance.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.GetSize(System.String)">
+            <summary>
+            Gets the size in bytes of a <see cref="T:System.String"/>.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to get size from.</param>
+            <returns>Number of bytes.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.StringExtensions.FromTable(System.String,System.Data.DataTable)">
+            <summary>
+            Replicates string for each <see cref="T:System.Data.DataRow"/> and replace all {{column-name}} with
+            the actual data from the column.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to populate by.</param>
+            <param name="dataTable"><see cref="T:System.Data.DataTable"/> to get data from.</param>
+            <returns>A collection <see cref="T:System.String"/>, for each <see cref="T:System.Data.DataRow"/>.</returns>
+        </member>
+        <member name="T:Gravity.Extensions.Utilities">
+            <summary>
+            Utilities class for various tasks and simplification of complicated operations.
+            </summary>
+        </member>
+        <member name="M:Gravity.Extensions.Utilities.GetTypes">
+            <summary>
+            Gets a collection of <see cref="T:System.Type"/> from all assemblies where the executing assembly is currently located.
+            </summary>
+            <returns>A collection of <see cref="T:System.Type"/>.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.Utilities.Copy(System.String,System.String)">
+            <summary>
+            Copy a folder from source location into target location.
+            </summary>
+            <param name="sourceDirectory">Source directory to copy.</param>
+            <param name="targetDirectory">Target directory to copy.</param>
+        </member>
+        <member name="M:Gravity.Extensions.Utilities.CopyAll(System.IO.DirectoryInfo,System.IO.DirectoryInfo)">
+            <summary>
+            copy folder from source into target
+            </summary>
+            <param name="source">source directory to copy</param>
+            <param name="target">target directory to copy</param>
+        </member>
+        <member name="M:Gravity.Extensions.Utilities.GetJsonSettings``1(Newtonsoft.Json.Formatting)">
+            <summary>
+            Gets <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> based on <see cref="T:Newtonsoft.Json.Serialization.NamingStrategy"/>.
+            </summary>
+            <typeparam name="T"><see cref="T:Newtonsoft.Json.Serialization.NamingStrategy"/> strategy type.</typeparam>
+            <returns>The <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> applied on a <see cref="T:Newtonsoft.Json.JsonSerializer"/> object.</returns>
+        </member>
+        <member name="T:Gravity.Extensions.OrbitExtensions">
+            <summary>
+            Gravity extensions for <see cref="T:Gravity.Services.DataContracts.OrbitRequest"/> and <see cref="T:Gravity.Services.DataContracts.OrbitResponse"/> objects.
+            </summary>
+        </member>
+        <member name="M:Gravity.Extensions.OrbitExtensions.ToEntries(Gravity.Services.DataContracts.OrbitResponse)">
+            <summary>
+            Flatten all <see cref="P:Gravity.Services.DataContracts.OrbitResponse.Extractions"/> into a list of entities entries.
+            </summary>
+            <param name="orbitResponse"><see cref="T:Gravity.Services.DataContracts.OrbitResponse"/> to flatten.</param>
+            <returns>A collection of entities entries.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.OrbitExtensions.GetByKey(Gravity.Services.DataContracts.Entity,System.String)">
+            <summary>
+            Gets the first value from <see cref="P:Gravity.Services.DataContracts.Entity.EntityContentEntries"/> by it's key, null if not found.
+            </summary>
+            <param name="entity">The <see cref="T:Gravity.Services.DataContracts.Entity"/> to search.</param>
+            <param name="key">The key to search by.</param>
+            <returns>The value found or null.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.OrbitExtensions.GetScreenshots(Gravity.Services.DataContracts.OrbitResponse)">
+            <summary>
+            Gets a collection of screenshot files from <see cref="T:Gravity.Services.DataContracts.OrbitResponse"/> if any.
+            </summary>
+            <param name="orbitResponse"><see cref="T:Gravity.Services.DataContracts.OrbitResponse"/> to get data from.</param>
+            <returns>A collection of screenshot files.</returns>
+        </member>
+        <member name="M:Gravity.Extensions.OrbitExtensions.Assert(Gravity.Services.DataContracts.OrbitResponse)">
+            <summary>
+            Gets <see cref="F:System.Boolean.TrueString"/> if no assertion results or if all assertions are <see cref="F:System.Boolean.TrueString"/>.
+            </summary>
+            <param name="orbitResponse"><see cref="T:Gravity.Services.DataContracts.OrbitResponse"/> to get data from.</param>
+            <returns><see cref="F:System.Boolean.TrueString"/> if no assertion results or if all assertions are <see cref="F:System.Boolean.TrueString"/></returns>
+            <remarks>This method evaluates the <see cref="T:Gravity.Services.DataContracts.Extraction"/> collection gathered by Assert action.</remarks>
+        </member>
+        <member name="M:Gravity.Extensions.OrbitExtensions.GetAssertions(Gravity.Services.DataContracts.OrbitResponse)">
+            <summary>
+            Gets collection of assertions entities from <see cref="T:Gravity.Services.DataContracts.OrbitResponse"/>.
+            </summary>
+            <param name="orbitResponse"><see cref="T:Gravity.Services.DataContracts.OrbitResponse"/> to get data from.</param>
+            <returns>A collection of assertions entities.</returns>
         </member>
     </members>
 </doc>

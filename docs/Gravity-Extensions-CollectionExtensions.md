@@ -1,0 +1,13 @@
+### [Gravity.Extensions](./Gravity-Extensions.md 'Gravity.Extensions')
+## CollectionExtensions Class
+Extensions for [System.Collections.Generic.IEnumerable&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1') and [System.Collections](https://docs.microsoft.com/en-us/dotnet/api/System.Collections 'System.Collections') objects.  
+```csharp
+public static class CollectionExtensions
+```
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CollectionExtensions  
+### Methods
+- [AsNumbers(System.Collections.Generic.IEnumerable&lt;string&gt;)](./Gravity-Extensions-CollectionExtensions-AsNumbers(System-Collections-Generic-IEnumerable-string-).md 'Gravity.Extensions.CollectionExtensions.AsNumbers(System.Collections.Generic.IEnumerable&lt;string&gt;)')
+- [DistinctBy&lt;TSource,TKey&gt;(System.Collections.Generic.IEnumerable&lt;TSource&gt;, System.Func&lt;TSource,TKey&gt;)](./Gravity-Extensions-CollectionExtensions-DistinctBy-TSource_TKey-(System-Collections-Generic-IEnumerable-TSource-_System-Func-TSource_TKey-).md 'Gravity.Extensions.CollectionExtensions.DistinctBy&lt;TSource,TKey&gt;(System.Collections.Generic.IEnumerable&lt;TSource&gt;, System.Func&lt;TSource,TKey&gt;)')
+- [DistinctBy&lt;TSource,TKey&gt;(System.Collections.Generic.IEnumerable&lt;TSource&gt;, System.Func&lt;TSource,TKey&gt;, System.Collections.Generic.IEqualityComparer&lt;TKey&gt;)](./Gravity-Extensions-CollectionExtensions-DistinctBy-TSource_TKey-(System-Collections-Generic-IEnumerable-TSource-_System-Func-TSource_TKey-_System-Collections-Generic-IEqualityComparer-TKey-).md 'Gravity.Extensions.CollectionExtensions.DistinctBy&lt;TSource,TKey&gt;(System.Collections.Generic.IEnumerable&lt;TSource&gt;, System.Func&lt;TSource,TKey&gt;, System.Collections.Generic.IEqualityComparer&lt;TKey&gt;)')
+- [Split&lt;T&gt;(System.Collections.Generic.IEnumerable&lt;T&gt;, int)](./Gravity-Extensions-CollectionExtensions-Split-T-(System-Collections-Generic-IEnumerable-T-_int).md 'Gravity.Extensions.CollectionExtensions.Split&lt;T&gt;(System.Collections.Generic.IEnumerable&lt;T&gt;, int)')
+- [TryAddRange&lt;T&gt;(System.Collections.Generic.List&lt;T&gt;, System.Collections.Generic.IEnumerable&lt;T&gt;)](./Gravity-Extensions-CollectionExtensions-TryAddRange-T-(System-Collections-Generic-List-T-_System-Collections-Generic-IEnumerable-T-).md 'Gravity.Extensions.CollectionExtensions.TryAddRange&lt;T&gt;(System.Collections.Generic.List&lt;T&gt;, System.Collections.Generic.IEnumerable&lt;T&gt;)')
