@@ -170,7 +170,7 @@
             <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
             <returns><see cref="T:System.Data.DataTable"/> object that match the filter criteria.</returns>
         </member>
-        <member name="M:Gravity.Extensions.DataTableExtensions.MarkDownToDataTable(System.Data.DataTable,System.String,System.String)">
+        <member name="M:Gravity.Extensions.DataTableExtensions.FromMarkDown(System.Data.DataTable,System.String,System.String)">
             <summary>
             Populates a <see cref="T:System.Data.DataTable"/> from a given .MD (file or string).
             </summary>

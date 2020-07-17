@@ -308,7 +308,7 @@ namespace Gravity.Extensions
         /// <param name="source">.MD file or string to populate from.</param>
         /// <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
         /// <returns><see cref="DataTable"/> object that match the filter criteria.</returns>
-        public static DataTable MarkDownToDataTable(this DataTable dataTable, string source, string filterExpression)
+        public static DataTable FromMarkDown(this DataTable dataTable, string source, string filterExpression)
         {
             // exit conditions
             DataSourceCompliance(source: source, needRepository: false, repository: string.Empty);
