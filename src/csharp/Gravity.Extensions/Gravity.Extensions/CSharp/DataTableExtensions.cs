@@ -310,6 +310,22 @@ namespace Gravity.Extensions
         /// <returns><see cref="DataTable"/> object that match the filter criteria.</returns>
         public static DataTable FromMarkDown(this DataTable dataTable, string source, string filterExpression)
         {
+            return DoFromMarkDown(source, filterExpression);
+        }
+
+        /// <summary>
+        /// Populates a <see cref="DataTable"/> from a given .MD (file or string).
+        /// </summary>
+        /// <param name="dataTable"><see cref="DataTable"/> to populate to.</param>
+        /// <param name="source">.MD file or string to populate from.</param>
+        /// <returns><see cref="DataTable"/> object that match the filter criteria.</returns>
+        public static DataTable FromMarkDown(this DataTable dataTable, string source)
+        {
+            return DoFromMarkDown(source, filterExpression: string.Empty);
+        }
+
+        private static DataTable DoFromMarkDown(string source, string filterExpression)
+        {
             // exit conditions
             DataSourceCompliance(source: source, needRepository: false, repository: string.Empty);
 
@@ -323,7 +339,10 @@ namespace Gravity.Extensions
             }
 
             // split into lines
-            var lines = source.Split(separator: new[] { Environment.NewLine }, options: StringSplitOptions.RemoveEmptyEntries);
+            var lines = source
+                .Split(separator: new[] { Environment.NewLine }, options: StringSplitOptions.RemoveEmptyEntries)
+                .Where(i => !Regex.IsMatch(input: i, pattern: @"^(\|-+)+\|?$"))
+                .ToArray();
 
             // exit conditions
             if (lines.Length == 1)
