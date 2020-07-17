@@ -338,10 +338,10 @@ namespace Gravity.Extensions
                 source = File.ReadAllText(source);
             }
 
-            // split into lines
-            var lines = source
-                .Split(separator: new[] { Environment.NewLine }, options: StringSplitOptions.RemoveEmptyEntries)
-                .Where(i => !Regex.IsMatch(input: i, pattern: @"^(\|-+)+\|?$"))
+            // split into lines            
+            var lines = Regex
+                .Split(input: source, pattern: @"\n\r|\n")
+                .Where(i => !Regex.IsMatch(input: i, pattern: @"^(\|-+)+\|?$") && !string.IsNullOrEmpty(i))
                 .ToArray();
 
             // exit conditions
