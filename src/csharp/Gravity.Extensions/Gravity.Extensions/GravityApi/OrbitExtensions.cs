@@ -5,6 +5,7 @@ using Gravity.Services.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Gravity.Extensions
 {
@@ -90,10 +91,28 @@ namespace Gravity.Extensions
         /// </summary>
         /// <param name="orbitResponse"><see cref="OrbitResponse"/> to get data from.</param>
         /// <returns>A collection of assertions entities.</returns>
-        public static IEnumerable<Entity> GetAssertions(this OrbitResponse orbitResponse) => orbitResponse?
-            .Extractions
-            .OrderBy(e => e.Key)
-            .SelectMany(e => e.Entities)
-            .Where(e => e.EntityContentEntries.Any(i => i.Key == "assertion"));
+        public static IEnumerable<Entity> GetAssertions(this OrbitResponse orbitResponse)
+        {
+            const string Key = "assertion";
+
+            // setup conditions
+            var allNumbers = orbitResponse.Extractions.All(i => Regex.IsMatch(input: i.Key, @"^\s+$"));
+
+            // return sorted
+            var byNumbers = orbitResponse?
+                .Extractions
+                .OrderBy(e => long.Parse(e.Key))
+                .SelectMany(e => e.Entities)
+                .Where(e => e.EntityContentEntries.Any(i => i.Key == Key));
+
+            var byString = orbitResponse?
+                .Extractions
+                .OrderBy(e => long.Parse(e.Key))
+                .SelectMany(e => e.Entities)
+                .Where(e => e.EntityContentEntries.Any(i => i.Key == Key));
+
+            // return sorted
+            return allNumbers ? byNumbers : byString;
+        }
     }
 }
