@@ -107,7 +107,7 @@ namespace Gravity.Extensions
 
             var byString = orbitResponse?
                 .Extractions
-                .OrderBy(e => long.Parse(e.Key))
+                .OrderBy(e => e.Key)
                 .SelectMany(e => e.Entities)
                 .Where(e => e.EntityContentEntries.Any(i => i.Key == Key));
 
