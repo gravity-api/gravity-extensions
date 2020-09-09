@@ -264,6 +264,19 @@ namespace Gravity.Extensions
         #endregion
 
         /// <summary>
+        /// Splits a given string by new lines and cleans up any empty lines and trim the substrings.
+        /// </summary>
+        /// <param name="str"><see cref="string"/> to split.</param>
+        /// <returns>An array whose elements contain the substrings from this instance that are delimited by one or more characters in separator.</returns>
+        public static IEnumerable<string> SplitByLines(this string str)
+        {
+            return Regex
+                .Split(str, @"((\r)+)?(\n)+((\r)+)?")
+                .Select(i => i.Trim())
+                .Where(i => !string.IsNullOrEmpty(i));
+        }
+
+        /// <summary>
         /// Gets the size in bytes of a <see cref="string"/>.
         /// </summary>
         /// <param name="str"><see cref="string"/> to get size from.</param>

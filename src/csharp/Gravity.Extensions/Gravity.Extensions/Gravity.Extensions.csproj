@@ -25,7 +25,7 @@
 
   <!-- Documentation Properties. -->
   <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <PackageReference Include="DefaultDocumentation" Version="0.6.7">
+    <PackageReference Include="DefaultDocumentation" Version="0.6.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -33,9 +33,9 @@
 
   <!-- Dependencies Properties. -->
   <ItemGroup>
-    <PackageReference Include="Gravity.Services.DataContracts" Version="2020.6.29.2" />
+    <PackageReference Include="Gravity.Services.DataContracts" Version="2020.9.3.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="Appium.WebDriver" Version="4.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
