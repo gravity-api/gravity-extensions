@@ -10,6 +10,8 @@ namespace Gravity.Extensions.UnitTests
         [DataTestMethod]
         [DataRow("||Key||Value||\r\n|build|Test Build|\r\n|project|Bug Manager|")]
         [DataRow("||Key||Value||\n|build|Test Build|\n|project|Bug Manager|")]
+        [DataRow("|Key|Value|\n|----|----|\n|build|Test Build|\n|project|Bug Manager|")]
+        [DataRow("|Key|Value|\r\n|----|----|\r\n|build|Test Build|\r\n|project|Bug Manager|")]
         public void FromMarkDownPositive(string markDown)
         {
             // parse

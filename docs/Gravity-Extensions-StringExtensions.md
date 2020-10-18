@@ -17,5 +17,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 - [PascalToCamelCase(string)](./Gravity-Extensions-StringExtensions-PascalToCamelCase(string).md 'Gravity.Extensions.StringExtensions.PascalToCamelCase(string)')
 - [PascalToKebabCase(string)](./Gravity-Extensions-StringExtensions-PascalToKebabCase(string).md 'Gravity.Extensions.StringExtensions.PascalToKebabCase(string)')
 - [PascalToSpaceCase(string)](./Gravity-Extensions-StringExtensions-PascalToSpaceCase(string).md 'Gravity.Extensions.StringExtensions.PascalToSpaceCase(string)')
+- [SplitByLines(string)](./Gravity-Extensions-StringExtensions-SplitByLines(string).md 'Gravity.Extensions.StringExtensions.SplitByLines(string)')
 - [ToBase64(string, bool)](./Gravity-Extensions-StringExtensions-ToBase64(string_bool).md 'Gravity.Extensions.StringExtensions.ToBase64(string, bool)')
 - [ToInt(string)](./Gravity-Extensions-StringExtensions-ToInt(string).md 'Gravity.Extensions.StringExtensions.ToInt(string)')

@@ -376,6 +376,13 @@
             <param name="str"><see cref="T:System.String"/> to convert.</param>
             <returns><see cref="T:System.String"/> instance.</returns>
         </member>
+        <member name="M:Gravity.Extensions.StringExtensions.SplitByLines(System.String)">
+            <summary>
+            Splits a given string by new lines and cleans up any empty lines and trim the substrings.
+            </summary>
+            <param name="str"><see cref="T:System.String"/> to split.</param>
+            <returns>An array whose elements contain the substrings from this instance that are delimited by one or more characters in separator.</returns>
+        </member>
         <member name="M:Gravity.Extensions.StringExtensions.GetSize(System.String)">
             <summary>
             Gets the size in bytes of a <see cref="T:System.String"/>.
