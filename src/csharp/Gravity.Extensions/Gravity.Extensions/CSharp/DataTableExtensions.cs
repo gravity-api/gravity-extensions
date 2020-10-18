@@ -339,8 +339,8 @@ namespace Gravity.Extensions
             }
 
             // split into lines            
-            var lines = Regex
-                .Split(input: source, pattern: @"\n\r|\n")
+            var lines = source
+                .SplitByLines()
                 .Where(i => !Regex.IsMatch(input: i, pattern: @"^(\|-+)+\|?$") && !string.IsNullOrEmpty(i))
                 .ToArray();
 
