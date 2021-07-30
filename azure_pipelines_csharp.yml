@@ -92,7 +92,7 @@ steps:
 - task: GitHubRelease@1
   displayName: 'create git-hub tag'
   inputs:
-    gitHubConnection: 'GitHub connection - Gravity API'
+    gitHubConnection: 'github.com'
     repositoryName: '$(GitHub.Repository)'
     action: 'create'
     target: '$(Build.SourceVersion)'
