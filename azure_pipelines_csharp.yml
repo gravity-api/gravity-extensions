@@ -1,6 +1,11 @@
 # set build name, this will be the package name
 name: Gravity.Extensions.$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
+trigger:
+  branches:
+    include:
+    - master
+
 # set agents pool (Default for local agent)
 pool:
   name: Default
