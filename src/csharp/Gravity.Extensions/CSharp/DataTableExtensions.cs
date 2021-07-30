@@ -3,16 +3,17 @@
  */
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-#pragma warning disable RCS1175, IDE0060
 namespace Gravity.Extensions
 {
     /// <summary>
@@ -308,6 +309,7 @@ namespace Gravity.Extensions
         /// <param name="source">.MD file or string to populate from.</param>
         /// <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
         /// <returns><see cref="DataTable"/> object that match the filter criteria.</returns>
+        [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Designed to be used as an indepndent static.")]
         public static DataTable FromMarkDown(this DataTable dataTable, string source, string filterExpression)
         {
             return DoFromMarkDown(source, filterExpression);
@@ -319,6 +321,7 @@ namespace Gravity.Extensions
         /// <param name="dataTable"><see cref="DataTable"/> to populate to.</param>
         /// <param name="source">.MD file or string to populate from.</param>
         /// <returns><see cref="DataTable"/> object that match the filter criteria.</returns>
+        [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Designed to be used as an indepndent static.")]
         public static DataTable FromMarkDown(this DataTable dataTable, string source)
         {
             return DoFromMarkDown(source, filterExpression: string.Empty);
@@ -367,7 +370,15 @@ namespace Gravity.Extensions
         }
 
         private static IEnumerable<string> SplitMarkdownTable(string line)
-            => Regex.Split(line, @"\|+(:)?").Where(i => Regex.IsMatch(i, @"\w+")).Select(i => i.Trim());
+        {
+            // build
+            line = line.Trim()[1..line.LastIndexOf("|")];
+
+            // get
+            return Regex
+                .Split(line, @"\|+(:)?")
+                .Select(i => string.IsNullOrWhiteSpace(i) ? string.Empty : i.Trim());
+        }
 
         private static DataTable ToTable(IEnumerable<IEnumerable<string>> rows)
         {
@@ -400,6 +411,7 @@ namespace Gravity.Extensions
         /// <param name="tableName">The name of the XML table to use for table mapping.</param>
         /// <param name="filterExpression">The criteria to use to filter the rows. For examples on how to filter rows, see DataView RowFilter Syntax [C#].</param>
         /// <returns><see cref="DataTable"/> object that match the filter criteria.</returns>
+        [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Designed to be used as an indepndent static.")]
         public static DataTable FromXml(this DataTable dataTable, string source, string tableName, string filterExpression)
         {
             // exit conditions
@@ -481,4 +493,3 @@ namespace Gravity.Extensions
             .ToDictionary(key => key.ColumnName, str => dataRow[str.ColumnName]);
     }
 }
-#pragma warning restore
