@@ -155,8 +155,8 @@ namespace Gravity.Extensions
 
         private static bool Evaluate(string source, string target, bool isLowerThan, bool isEqual = false)
         {
-            int.TryParse(source, out int sourceOut);
-            int.TryParse(target, out int targetOut);
+            _ = int.TryParse(source, out int sourceOut);
+            _ = int.TryParse(target, out int targetOut);
 
             if (!isEqual)
             {
@@ -205,7 +205,7 @@ namespace Gravity.Extensions
             var result = new StringBuilder(words[0].ToLower());
             for (int i = 1; i < words.Length; i++)
             {
-                result.Append(words[i].Substring(0, 1).ToUpper()).Append(words[i].Substring(1));
+                result.Append(words[i].Substring(0, 1).ToUpper()).Append(words[i][1..]);
             }
             return $"{result}";
         }
@@ -217,7 +217,7 @@ namespace Gravity.Extensions
         /// <returns><see cref="int"/> representation of the <see cref="string"/>.</returns>
         public static int ToInt(this string str)
         {
-            int.TryParse(str, out int sOut);
+            _ = int.TryParse(str, out int sOut);
             return sOut;
         }
 
